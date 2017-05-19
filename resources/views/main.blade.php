@@ -4,7 +4,7 @@
 
 <div class="row" style="margin-top: 20px;">
 	<div class="form-group text-right">
-		<a href="/posts/create"><button type="button" class="btn btn-primary">Create</button></a>
+		<a href="post/create"><button type="button" class="btn btn-primary">Create</button></a>
 	</div>
 	<table class="table table-bordered">
 		<thead>
@@ -18,9 +18,9 @@
 		<tbody>
 			@foreach ($posts as $post)
 				<tr>
-					<td><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></td>
+					<td><a href="{{ url('post/'.$post->id) }}">{{ $post->title }}</a></td>
 					<td>{{ $post->body }}</td>
-					<td><a href="/posts/{{ $post->id }}/edit">Edit</a></td>
+					<td><a href="{{ url('post/'.$post->id.'/edit') }}">Edit</a></td>
 					<td><a href="#" class="post-delete-{{ $post->id }}">Delete</a></td>
 				</tr>
 
@@ -29,7 +29,7 @@
 						$('.post-delete-{{ $post->id }}').on('click', function () {
 							$.ajax(
 							{ 
-								url : 'posts/{{ $post->id }}',
+								url : '{{ url('post/'.$post->id) }}',
 								type : 'POST',
 								data : {
 									'_method' : 'DELETE',

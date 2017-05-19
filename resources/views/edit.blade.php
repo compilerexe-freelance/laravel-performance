@@ -5,7 +5,7 @@
 <div class="row" style="margin-top: 20px;">
 	
 	<div class="col-md-offset-4 col-md-4">
-		<form method="POST" action="/posts/{{ $post->id }}">
+		<form method="POST" action="{{ url('post/'.$post->id) }}">
 
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
